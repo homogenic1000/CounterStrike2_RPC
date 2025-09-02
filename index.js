@@ -1,34 +1,50 @@
+const express = require('express');
+const bodyParser = require('body-parser');
 const RPC = require('discord-rpc');
 
-const clientId = '1412042561391951912'; // Mets ton vrai client ID ici
-RPC.register(clientId);
+const app = express();
+const PORT = 3000;
 
+const clientId = 'TON_CLIENT_ID_DISCORD';
+RPC.register(clientId);
 const rpc = new RPC.Client({ transport: 'ipc' });
 
-async function setActivity() {
-    if (!rpc) return;
+let startTimestamp = new Date();
 
-    const kd = 1.57; // Valeur fictive du MDA, on va plus tard la rendre dynamique
+app.use(bodyParser.json());
+
+app.post('/', (req, res) => {
+    const data = req.body;
+    console.log(data); // Pour debug
+
+    const map = data.map?.name || 'unknown';
+    const phase = data.round?.phase || 'Warmup';
+    const player = data.player || {};
+    const team = player.team || 'Spectator';
+    const scoreT = data.map?.team_t?.score ?? 0;
+    const scoreCT = data.map?.team_ct?.score ?? 0;
+
+    const details = `Map: ${map}`;
+    const state = `Score CT ${scoreCT} - ${scoreT} T | ${phase}`;
 
     rpc.setActivity({
-        details: `Rang : Gold Nova 3`,
-        state: 'In Competitive - 12 / 8',
-        largeImageKey: 'vertigo', // Doit correspondre au nom de l’image dans ton app Discord
-        largeImageText: 'Playing on Vertigo',
-        smallImageKey: 't',
-        smallImageText:'In Terrorist',
-        startTimestamp: new Date(),
-        instance: false,
+        details: '',
+        state: '',
+        startTimestamp: newDate(),
+        largeImageKey: map.toLowerCase(), // Assumes image is uploaded with map name
+        largeImageText: map,
+        instance: false
     });
-}
+
+    res.sendStatus(200);
+});
 
 rpc.on('ready', () => {
-    setActivity();
-
-    // Optionnel : mettre à jour toutes les 15 secondes
-    setInterval(()DD => {
-        setActivity();
-    }, 15 * 1000);
+    console.log('Rich Presence Discord prêt 🚀');
 });
 
 rpc.login({ clientId }).catch(console.error);
+
+app.listen(PORT, () => {
+    console.log(`Serveur GSI en écoute sur http://localhost:${PORT}`);
+});

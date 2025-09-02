@@ -11,12 +11,12 @@ async function setActivity() {
     const kd = 1.57; // Valeur fictive du MDA, on va plus tard la rendre dynamique
 
     rpc.setActivity({
-        details: `Rang : Gold Nova 3'`,
+        details: `Rang : Gold Nova 3`,
         state: 'In Competitive - 12 / 8',
-        largeImageKey: 'dust_2', // Doit correspondre au nom de l’image dans ton app Discord
-        largeImageText: 'Playing on Dust II',
+        largeImageKey: 'vertigo', // Doit correspondre au nom de l’image dans ton app Discord
+        largeImageText: 'Playing on Vertigo',
         smallImageKey: 't',
-        smallImageText:'In Terrorist Team',
+        smallImageText:'In Terrorist',
         startTimestamp: new Date(),
         instance: false,
     });
@@ -26,7 +26,7 @@ rpc.on('ready', () => {
     setActivity();
 
     // Optionnel : mettre à jour toutes les 15 secondes
-    setInterval(() => {
+    setInterval(()DD => {
         setActivity();
     }, 15 * 1000);
 });

@@ -19,5 +19,5 @@ It allows players to display their in-game status, including the current map, sc
 ## Prototype
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4y3b8kzZ4mA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-![Idle](./images/Idle.png)
-![Match](./images/Match.png)
+<img src="./images/Idle.png" alt="Idle" width="300"/>
+<img src="./images/Match.png" alt="Match" width="300"/>

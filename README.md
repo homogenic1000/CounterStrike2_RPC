@@ -17,5 +17,7 @@ It allows players to display their in-game status, including the current map, sc
 - 🎯 Indicates if the player is in a match or in the lobby
 
 ## Prototype
-<img src="./images/Idle.png" alt="Idle" width="300"/>
-<img src="./images/Match.png" alt="Match" width="300"/>
+<p align="left">
+  <img src="./images/Idle.png" alt="Idle" width="300"/>
+  <img src="./images/Match.png" alt="Match" width="300"/>
+</p>
